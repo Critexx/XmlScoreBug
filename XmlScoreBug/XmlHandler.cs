@@ -1,5 +1,6 @@
 ﻿using System.Xml;
 using Microsoft.Win32;
+using System.Windows.Controls;
 
 namespace XmlScoreBug
 {
@@ -7,6 +8,7 @@ namespace XmlScoreBug
     {
         private string _filename;
         public Match match;
+        private string _lastScoreAction;
 
         public XmlHandler()
         {
@@ -74,6 +76,64 @@ namespace XmlScoreBug
             {
                 _filename = saveFileDialog.FileName;
                 WriteXml();
+            }
+        }
+
+        public void ScoreChange(object sender)
+        {
+            var btn = (Button)sender;
+            switch (btn.Name)
+            {
+                case "BtnTeam1Plus1":
+                    match.ScoreTeam1++;
+                    break;
+                case "BtnTeam1Plus2":
+                    match.ScoreTeam1 += 2;
+                    break;
+                case "BtnTeam1Plus3":
+                    match.ScoreTeam1 += 3;
+                    break;
+                case "BtnTeam2Plus1":
+                    match.ScoreTeam2++;
+                    break;
+                case "BtnTeam2Plus2":
+                    match.ScoreTeam2 += 2;
+                    break;
+                case "BtnTeam2Plus3":
+                    match.ScoreTeam2 += 3;
+                    break;
+            }
+            _lastScoreAction = btn.Name;
+        }
+
+        public void ClearScore()
+        {
+            match.ScoreTeam1 = 0;
+            match.ScoreTeam2 = 0;
+        }
+
+        public void UndoScore()
+        {
+            switch (_lastScoreAction)
+            {
+                case "BtnTeam1Plus1":
+                    match.ScoreTeam1--;
+                    break;
+                case "BtnTeam1Plus2":
+                    match.ScoreTeam1 -= 2;
+                    break;
+                case "BtnTeam1Plus3":
+                    match.ScoreTeam1 -= 3;
+                    break;
+                case "BtnTeam2Plus1":
+                    match.ScoreTeam2--;
+                    break;
+                case "BtnTeam2Plus2":
+                    match.ScoreTeam2 -= 2;
+                    break;
+                case "BtnTeam2Plus3":
+                    match.ScoreTeam2 -= 3;
+                    break;
             }
         }
 

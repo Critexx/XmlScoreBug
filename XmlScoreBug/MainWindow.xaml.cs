@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,27 @@ namespace XmlScoreBug
         private void MenuItem_Click_Save_As(object sender, RoutedEventArgs e)
         {
             xmlHandler.SaveXml();
+        }
+
+        private void BtnScore_Click(object sender, RoutedEventArgs e)
+        {
+            xmlHandler.ScoreChange(sender);
+            DataContext = xmlHandler.match;
+            BtnScoreUndo.IsEnabled = true;
+        }
+
+        private void BtnScoreUndo_Click(object sender, RoutedEventArgs e)
+        {
+            xmlHandler.UndoScore();
+            DataContext = xmlHandler.match;
+            BtnScoreUndo.IsEnabled = false;
+        }
+
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            xmlHandler.ClearScore();
+            DataContext = xmlHandler.match;
+            BtnScoreUndo.IsEnabled = false;
         }
     }
 }
