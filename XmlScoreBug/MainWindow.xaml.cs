@@ -77,5 +77,17 @@ namespace XmlScoreBug
             DataContext = xmlHandler.match;
             BtnScoreUndo.IsEnabled = false;
         }
+
+        private void BtnFoul_Click(object sender, RoutedEventArgs e)
+        {
+            xmlHandler.FoulChange(sender);
+            DataContext = xmlHandler.match;
+        }
+
+        private void btnFoulClear_Click(object sender, RoutedEventArgs e)
+        {
+            xmlHandler.ClearFoul();
+            DataContext = xmlHandler.match;
+        }
     }
 }

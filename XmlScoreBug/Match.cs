@@ -70,19 +70,31 @@ namespace XmlScoreBug
         public int FoulTeam1
         {
             get { return _foulTeam1; }
-            set { _foulTeam1 = value; }
+            set
+            {
+                _foulTeam1 = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("FoulTeam1"));
+            }
         }
 
         public int FoulTeam2
         {
             get { return _foulTeam2; }
-            set { _foulTeam2 = value; }
+            set
+            {
+                _foulTeam2 = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("FoulTeam2"));
+            }
         }
 
         public TimeSpan Time
         {
             get { return _time; }
-            set { _time = value; }
+            set
+            {
+                _time = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Time"));
+            }
         }
 
         public TimeSpan MatchTimeLength

@@ -68,10 +68,10 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Label x:Name="LblTeam1Foul" Grid.RowSpan="2" Content="{Binding Path=FoulTeam1}" MinWidth="40" />
-                        <RepeatButton x:Name="BtnTeam1Up" Grid.Column="1">
+                        <RepeatButton x:Name="BtnTeam1Up" Grid.Row="0" Grid.Column="1" Click="BtnFoul_Click">
                             <Polygon Margin="4,0" Points="3,0 6,6 0,6 3,0" Stroke="Black" Fill="Black"/>
                         </RepeatButton>
-                        <RepeatButton x:Name="BtnTeam1Down" Grid.Row="1" Grid.Column="1">
+                        <RepeatButton x:Name="BtnTeam1Down" Grid.Row="1" Grid.Column="1" Click="BtnFoul_Click">
                             <Polygon Margin="4,0" Points="3,6 6,0 0,0 3,6" Stroke="Black" Fill="Black"/>
                         </RepeatButton>
                     </Grid>
@@ -88,15 +88,15 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Label x:Name="LblTeam2Foul" Grid.RowSpan="2" Content="{Binding Path=FoulTeam2}"  MinWidth="40" />
-                        <RepeatButton x:Name="BtnTeam2Up" Grid.Column="1">
+                        <RepeatButton x:Name="BtnTeam2Up" Grid.Row="0" Grid.Column="1" Click="BtnFoul_Click">
                             <Polygon Margin="4,0" Points="3,0 6,6 0,6 3,0" Stroke="Black" Fill="Black"/>
                         </RepeatButton>
-                        <RepeatButton x:Name="BtnTeam2Down" Grid.Row="1" Grid.Column="1">
+                        <RepeatButton x:Name="BtnTeam2Down" Grid.Row="1" Grid.Column="1" Click="BtnFoul_Click">
                             <Polygon Margin="4,0" Points="3,6 6,0 0,0 3,6" Stroke="Black" Fill="Black"/>
                         </RepeatButton>
                     </Grid>
                 </Border>
-                <Button x:Name="BtnFoulClear" Content="Clear" VerticalAlignment="Center" HorizontalAlignment="Center" Width="54" Height="24"/>
+                <Button x:Name="BtnFoulClear" Content="Clear" VerticalAlignment="Center" HorizontalAlignment="Center" Width="54" Height="24" Click="btnFoulClear_Click"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="GroupBoxMatchTime" Header="Match Time" Margin="25,25,25,0" VerticalAlignment="Top" Height="126">

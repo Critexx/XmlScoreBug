@@ -1,6 +1,7 @@
 ﻿using System.Xml;
 using Microsoft.Win32;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace XmlScoreBug
 {
@@ -135,6 +136,34 @@ namespace XmlScoreBug
                     match.ScoreTeam2 -= 3;
                     break;
             }
+        }
+
+        public void FoulChange(object sender)
+        {
+            var btn = (RepeatButton)sender;
+            switch (btn.Name)
+            {
+                case "BtnTeam1Up":
+                    match.FoulTeam1++;
+                    break;
+                case "BtnTeam1Down":
+                    if (match.FoulTeam1 > 0)
+                        match.FoulTeam1--;
+                    break;
+                case "BtnTeam2Up":
+                    match.FoulTeam2++;
+                    break;
+                case "BtnTeam2Down":
+                    if (match.FoulTeam2 > 0)
+                        match.FoulTeam2--;
+                    break;
+            }
+        }
+
+        public void ClearFoul()
+        {
+            match.FoulTeam1 = 0;
+            match.FoulTeam2 = 0;
         }
 
         public void WriteXml()
