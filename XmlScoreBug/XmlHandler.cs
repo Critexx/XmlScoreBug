@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using Microsoft.Win32;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -186,6 +187,34 @@ namespace XmlScoreBug
             writer.WriteEndElement();
             writer.WriteEndDocument();
             writer.Close();
+        }
+
+        public void ChangeTime(object sender)
+        {
+            var btn = (Button)sender;
+            switch (btn.Name)
+            {   
+                case "BtnTimePlus10Min":
+                    match.Time += TimeSpan.FromMinutes(10);
+                break;
+                case "BtnTimePlusMin":
+                    match.Time += TimeSpan.FromMinutes(1);
+                    break;
+                case "BtnTimeMinusMin":
+                    if (match.Time >= TimeSpan.FromMinutes(1))
+                        match.Time -= TimeSpan.FromMinutes(1);
+                    break;
+                case "BtnTimePlusSec":
+                    match.Time += TimeSpan.FromSeconds(1);
+                    break; 
+                case "BtnTimeMinusSec":
+                    if (match.Time >= TimeSpan.FromSeconds(1))
+                        match.Time -= TimeSpan.FromSeconds(1);
+                    break;
+                case "BtnTimeReset":
+                    match.Time = TimeSpan.Zero;
+                    break;
+            }
         }
     }
 }

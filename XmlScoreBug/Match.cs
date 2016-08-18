@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace XmlScoreBug
 {
@@ -25,7 +26,15 @@ namespace XmlScoreBug
         private int _foulTeam1;
         private int _foulTeam2;
         private TimeSpan _time;
-        private TimeSpan _matchTimeLength;
+        TimeSpan StartTime;
+        DateTime StartCalcTime;
+        private DispatcherTimer _timer;
+
+        public Match()
+        {
+            _timer = new DispatcherTimer();
+            _timer.Tick += dispatcherTimer_Tick;
+        }
 
         public string NameTeam1
         {
@@ -93,19 +102,43 @@ namespace XmlScoreBug
             set
             {
                 _time = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("Time"));
+                OnPropertyChanged(new PropertyChangedEventArgs("TimeFormatted"));
             }
         }
 
-        public TimeSpan MatchTimeLength
+        public string TimeFormatted
         {
-            get { return _matchTimeLength; }
-            set { _matchTimeLength = value; }
+            get
+            {
+                string strformatSek;
+                if (Time.Seconds < 10)
+                    strformatSek = "0" + Time.Seconds.ToString();
+                else
+                    strformatSek = Time.Seconds.ToString();
+                return Time.Minutes.ToString() + ":" + strformatSek;
+            }
+            set  { }
         }
 
-        public void ResetScore()
+        public void Play()
         {
-            
+            int interval = 200;
+            _timer.Interval = TimeSpan.FromMilliseconds(interval);
+            StartCalcTime = DateTime.Now;
+            StartTime = Time;
+            _timer.Start();
+        }
+
+        public void Stop()
+        {
+            _timer.Stop();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            //    Time +=  Startzeit.Subtract(DateTime.Now);
+            Time = StartTime + StartCalcTime.Subtract(DateTime.Now);
+            // MessageBox.Show("Zeit:" + Time.ToString());
         }
     }
 }

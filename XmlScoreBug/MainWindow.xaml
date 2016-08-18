@@ -101,14 +101,14 @@
         </GroupBox>
         <GroupBox x:Name="GroupBoxMatchTime" Header="Match Time" Margin="25,25,25,0" VerticalAlignment="Top" Height="126">
             <Grid>
-                <TextBox x:Name="TextBoxTime" Text="{Binding Path=Time}" TextAlignment="Center" Height="23" HorizontalAlignment="Center" Width="54" Margin="218,12,218,65"/>
-                <Button x:Name="BtnTimeStop" Content="Stop" HorizontalAlignment="Center" Width="54" Margin="213,46,213,28" Height="24"/>
-                <Button x:Name="BtnTimePlusMin" Content="+1 Min" HorizontalAlignment="Center" Width="54" Margin="145,10,281,64" Height="24"/>
-                <Button x:Name="BtnTimeMinusMin" Content="-1 Min" HorizontalAlignment="Center" Width="54" Margin="145,46,281,28" Height="24"/>
-                <Button x:Name="BtnTimePlusSec" Content="+1 Sec" HorizontalAlignment="Center" Width="54" Margin="280,10,146,64" Height="24"/>
-                <Button x:Name="BtnTimeMinusSec" Content="-1 Sec" HorizontalAlignment="Center" Width="54" Margin="280,46,146,28" Height="24"/>
-                <Button x:Name="BtnTimeReset" Content="Reset" HorizontalAlignment="Center" Width="69" Margin="54,46,357,28" Height="24"/>
-                <Button x:Name="BtnTimeSet10Min" Content="+10 Min" HorizontalAlignment="Center" Width="69" Margin="54,10,357,64" Height="24"/>
+                <TextBox x:Name="TextBoxTime" Text="{Binding Path=TimeFormatted}" TextAlignment="Center" Height="23" HorizontalAlignment="Center" Width="54" Margin="218,12,218,65"/>
+                <Button x:Name="BtnTimePlayStop" Content="Play" HorizontalAlignment="Center" Width="54" Margin="213,46,213,28" Height="24" Click="btnTimePlayStop_Click"/>
+                <Button x:Name="BtnTimePlusMin" Content="+1 Min" HorizontalAlignment="Center" Width="54" Margin="145,10,281,64" Height="24" Click="BtnChangeTime_Click"/>
+                <Button x:Name="BtnTimeMinusMin" Content="-1 Min" HorizontalAlignment="Center" Width="54" Margin="145,46,281,28" Height="24" Click="BtnChangeTime_Click"/>
+                <Button x:Name="BtnTimePlusSec" Content="+1 Sec" HorizontalAlignment="Center" Width="54" Margin="280,10,146,64" Height="24" Click="BtnChangeTime_Click"/>
+                <Button x:Name="BtnTimeMinusSec" Content="-1 Sec" HorizontalAlignment="Center" Width="54" Margin="280,46,146,28" Height="24" Click="BtnChangeTime_Click"/>
+                <Button x:Name="BtnTimeReset" Content="Reset" HorizontalAlignment="Center" Width="69" Margin="54,46,357,28" Height="24" Click="BtnChangeTime_Click"/>
+                <Button x:Name="BtnTimePlus10Min" Content="+10 Min" HorizontalAlignment="Center" Width="69" Margin="54,10,357,64" Height="24" Click="BtnChangeTime_Click"/>
             </Grid>
         </GroupBox>
     </StackPanel>

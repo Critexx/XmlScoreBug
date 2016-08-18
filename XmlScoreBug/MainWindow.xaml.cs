@@ -73,6 +73,7 @@ namespace XmlScoreBug
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
+            
             xmlHandler.ClearScore();
             DataContext = xmlHandler.match;
             BtnScoreUndo.IsEnabled = false;
@@ -88,6 +89,39 @@ namespace XmlScoreBug
         {
             xmlHandler.ClearFoul();
             DataContext = xmlHandler.match;
+        }
+
+        private void BtnChangeTime_Click(object sender, RoutedEventArgs e)
+        {
+            xmlHandler.ChangeTime(sender);
+            DataContext = xmlHandler.match;
+
+        }
+
+        private void btnTimePlayStop_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnTimePlayStop.Content.ToString() == "Play")
+            {
+                xmlHandler.match.Play();
+                BtnTimePlayStop.Content = "Stop";
+                BtnTimePlusMin.IsEnabled = false;
+                BtnTimeMinusMin.IsEnabled = false;
+                BtnTimePlusSec.IsEnabled = false;
+                BtnTimeMinusSec.IsEnabled = false;
+                BtnTimePlus10Min.IsEnabled = false;
+                BtnTimeReset.IsEnabled = false;
+            }
+            else
+            {
+                xmlHandler.match.Stop();
+                BtnTimePlayStop.Content = "Play";
+                BtnTimePlusMin.IsEnabled = true;
+                BtnTimeMinusMin.IsEnabled = true;
+                BtnTimePlusSec.IsEnabled = true;
+                BtnTimeMinusSec.IsEnabled = true;
+                BtnTimePlus10Min.IsEnabled = true;
+                BtnTimeReset.IsEnabled = true;
+            }
         }
     }
 }
