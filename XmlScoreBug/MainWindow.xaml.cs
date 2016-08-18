@@ -102,7 +102,7 @@ namespace XmlScoreBug
         {
             if (BtnTimePlayStop.Content.ToString() == "Play")
             {
-                xmlHandler.match.Play();
+                xmlHandler.PlayMatch();
                 BtnTimePlayStop.Content = "Stop";
                 BtnTimePlusMin.IsEnabled = false;
                 BtnTimeMinusMin.IsEnabled = false;
@@ -113,7 +113,7 @@ namespace XmlScoreBug
             }
             else
             {
-                xmlHandler.match.Stop();
+                xmlHandler.StopMatch();
                 BtnTimePlayStop.Content = "Play";
                 BtnTimePlusMin.IsEnabled = true;
                 BtnTimeMinusMin.IsEnabled = true;

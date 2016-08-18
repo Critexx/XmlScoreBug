@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Created with XmlScoreBug-->
 <Scorebug>
-  <!--Created with XmlScoreBug-->
   <NameT1>Rapperswil</NameT1>
-  <NameT2>Wetzikon</NameT2>
-  <ScoreT1>2</ScoreT1>
+  <NameT2>Uster</NameT2>
+  <ScoreT1>5</ScoreT1>
   <ScoreT2>3</ScoreT2>
-  <FoulT1>2</FoulT1>
-  <FoulT2>1</FoulT2>
-  <Time>00:00:00</Time>
+  <FoulT1>1</FoulT1>
+  <FoulT2>2</FoulT2>
+  <Time>00:10:00</Time>
 </Scorebug>

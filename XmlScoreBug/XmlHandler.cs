@@ -3,6 +3,7 @@ using System.Xml;
 using Microsoft.Win32;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Threading;
 
 namespace XmlScoreBug
 {
@@ -11,10 +12,13 @@ namespace XmlScoreBug
         private string _filename;
         public Match match;
         private string _lastScoreAction;
+        private DispatcherTimer _timer;
 
         public XmlHandler()
         {
             match = new Match();
+            _timer = new DispatcherTimer();
+            _timer.Tick += dispatcherTimer_Tick;
         }
 
         public string NewXml()
@@ -169,14 +173,18 @@ namespace XmlScoreBug
 
         public void WriteXml()
         {
+            if (_filename == null)
+            {
+                return;
+            }
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.IndentChars = "  ";
 
             XmlWriter writer = XmlWriter.Create(_filename, settings);
             writer.WriteStartDocument();
-            writer.WriteStartElement("Scorebug");
             writer.WriteComment("Created with " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+            writer.WriteStartElement("Scorebug");      
             writer.WriteElementString("NameT1", match.NameTeam1);
             writer.WriteElementString("NameT2", match.NameTeam2);
             writer.WriteElementString("ScoreT1", match.ScoreTeam1.ToString());
@@ -215,6 +223,25 @@ namespace XmlScoreBug
                     match.Time = TimeSpan.Zero;
                     break;
             }
+
+        }
+
+        public void PlayMatch()
+        {
+            _timer.Interval = TimeSpan.FromMilliseconds(500);
+            _timer.Start();
+            match.Play();
+        }
+
+        public void StopMatch()
+        {
+            _timer.Stop();
+            match.Stop();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            WriteXml();
         }
     }
 }

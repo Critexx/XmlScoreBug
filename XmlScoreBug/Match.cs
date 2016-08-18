@@ -136,9 +136,8 @@ namespace XmlScoreBug
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            //    Time +=  Startzeit.Subtract(DateTime.Now);
             Time = StartTime + StartCalcTime.Subtract(DateTime.Now);
-            // MessageBox.Show("Zeit:" + Time.ToString());
+            
         }
     }
 }
